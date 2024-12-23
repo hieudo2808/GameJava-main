@@ -3,11 +3,9 @@ package character;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
 import logic.ScoreService;
 import mapboard.Board;
 import things.Coin;

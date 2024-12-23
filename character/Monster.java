@@ -1,7 +1,6 @@
 package character;
 
 import things.Wall;
-
 import java.awt.*;
 import java.util.ArrayList;
 

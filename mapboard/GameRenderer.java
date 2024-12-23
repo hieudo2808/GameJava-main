@@ -40,7 +40,7 @@ public class GameRenderer {
         walls.forEach(wall -> wall.draw(g, panel));
         player.draw(g, panel);
         drawScore(g, panel, player);
-        drawLife(g, panel, player);
+        drawLife(g, player);
     }
 
     public void drawGameOver(Graphics g, int width, int height) {
@@ -96,7 +96,7 @@ public class GameRenderer {
         g2d.drawString(text, x, y);
     }
 
-    private void drawLife(Graphics g, JPanel panel, Player player) {
+    private void drawLife(Graphics g, Player player) {
         String text = player.getName() + "   Life: " + player.getLife();
         Graphics2D g2d = (Graphics2D) g;
         g2d.setFont(new Font("Lato", Font.BOLD, 35));

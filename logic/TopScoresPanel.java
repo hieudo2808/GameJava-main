@@ -44,7 +44,7 @@ public class TopScoresPanel extends JPanel {
                 String[] scores = scoresJson.split("\n");
                 for (String score : scores) {
                     if (!score.trim().isEmpty()) {  // Avoid empty lines
-                        sb.append(score.replace(":", " - ") + "<br>");  // Replace ':' with ' - ' and add line break
+                        sb.append(score.replace(":", " - ")).append("<br>");  // Replace ':' with ' - ' and add line break
                     }
                 }
 
@@ -57,23 +57,11 @@ public class TopScoresPanel extends JPanel {
             @Override
             protected void process(java.util.List<String> chunks) {
                 // Update the label text
-                scoreLabel.setText(chunks.get(0));
-            }
-
-            @Override
-            protected void done() {
-                // Any additional finalization (if needed) after the fetching process
+                scoreLabel.setText(chunks.getFirst());
             }
         };
 
         // Start the background task
         worker.execute();
-    }
-
-
-    // Save the score to the server (via POST)
-    public void saveScoreToServer(String playerName, int score) {
-        // Use the logic.ScoreService to post the score to the PHP server
-        ScoreService.postScore(playerName, score);
     }
 }

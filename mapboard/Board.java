@@ -34,6 +34,7 @@ public class Board extends JPanel implements ActionListener, KeyListener {
 
     // UI components
     private final JButton restartButton;
+    private final JButton btnExit;
     private final GameRenderer renderer;
     private final GameObjectSpawner spawner;
 
@@ -51,6 +52,8 @@ public class Board extends JPanel implements ActionListener, KeyListener {
         timer.start();
 
         restartButton = createRestartButton();
+        btnExit = createBtnExit();
+
         setupPanel();
     }
 
@@ -68,15 +71,24 @@ public class Board extends JPanel implements ActionListener, KeyListener {
 
     private JButton createRestartButton() {
         JButton button = new JButton("Restart");
-        button.setBounds(400, 400, 100, 50);
+        button.setBounds(300, 320, 100, 50);
         button.setVisible(false);
         button.addActionListener(e -> restartGame());
+        return button;
+    }
+
+    private JButton createBtnExit() {
+        JButton button = new JButton("Exit");
+        button.setBounds(500, 320, 100, 50);
+        button.setVisible(false);
+        button.addActionListener(e -> System.exit(0));
         return button;
     }
 
     private void setupPanel() {
         setLayout(null);
         add(restartButton);
+        add(btnExit);
         addKeyListener(this);
         setFocusable(true);
     }
@@ -85,6 +97,8 @@ public class Board extends JPanel implements ActionListener, KeyListener {
         initializeGame();
         timer.start();
         restartButton.setVisible(false);
+        btnExit.setVisible(false);
+        spawner.deletePos();
         repaint();
     }
 
@@ -159,6 +173,7 @@ public class Board extends JPanel implements ActionListener, KeyListener {
     private void handleGameEnd() {
         player.saveScoreToFile();
         restartButton.setVisible(true);
+        btnExit.setVisible(true);
         timer.stop();
         repaint();
     }

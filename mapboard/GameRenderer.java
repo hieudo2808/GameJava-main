@@ -60,7 +60,7 @@ public class GameRenderer {
         g2d.setFont(new Font("Lato", Font.BOLD, 50));
         FontMetrics metrics = g2d.getFontMetrics();
         int x = (width - metrics.stringWidth(title)) / 2;
-        int y = (height - metrics.getHeight()) / 2 + metrics.getAscent();
+        int y = (height - metrics.getHeight()) / 2 + metrics.getAscent() - 100;
         g2d.drawString(title, x, y);
 
         // Draw subtitle
@@ -113,7 +113,6 @@ public class GameRenderer {
                 }
             }
         }
-
         g2d.setColor(Color.WHITE);
         g2d.drawString(text, x, y);
     }

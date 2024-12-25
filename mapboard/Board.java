@@ -73,7 +73,7 @@ public class Board extends JPanel implements ActionListener, KeyListener {
         JButton button = new JButton("Restart");
         button.setBounds(300, 320, 100, 50);
         button.setVisible(false);
-        button.addActionListener(e -> restartGame());
+        button.addActionListener(_ -> restartGame());
         return button;
     }
 
@@ -81,7 +81,7 @@ public class Board extends JPanel implements ActionListener, KeyListener {
         JButton button = new JButton("Exit");
         button.setBounds(500, 320, 100, 50);
         button.setVisible(false);
-        button.addActionListener(e -> System.exit(0));
+        button.addActionListener(_ -> System.exit(0));
         return button;
     }
 

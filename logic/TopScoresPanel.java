@@ -26,15 +26,15 @@ public class TopScoresPanel extends JPanel {
         add(label, BorderLayout.NORTH);
 
         // Set up the timer to update every 2 seconds
-        Timer timer = new Timer(2000, e -> fetchTopScores());
+        Timer timer = new Timer(2000, _ -> fetchTopScores());
         timer.start();
     }
 
     // This method fetches the top scores from the PHP server
     public void fetchTopScores() {
-        SwingWorker<Void, String> worker = new SwingWorker<Void, String>() {
+        SwingWorker<Void, String> worker = new SwingWorker<>() {
             @Override
-            protected Void doInBackground() throws Exception {
+            protected Void doInBackground() {
                 String scoresJson = ScoreService.getScore();  // Assuming this method returns scores as a string
                 scoresJson = scoresJson.replace("\"", "");
                 scoresJson = scoresJson.replace("-", "<br>");
